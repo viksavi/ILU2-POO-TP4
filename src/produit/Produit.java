@@ -16,6 +16,6 @@ public abstract class Produit implements IProduit {
 		return nom;
 	}
 	
-	@Override
-	public abstract String getDescription();
+	
+
 }

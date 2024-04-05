@@ -9,12 +9,13 @@ public class Etal<P extends IProduit> implements IEtal{
 	private Gaulois vendeur;
 	private P[] produits;
 	private int nbProduit;
-	private int prix;
+	private double prix;
 	
-	public void installerVendeur(Gaulois vendeur, P[] produit, int prix) {
+	public void installerVendeur(Gaulois vendeur, P[] produit, double prix) {
 		this.vendeur = vendeur;
 		this.produits = produit;
 		this.prix = prix;
+		nbProduit = produit.length;
 	}
 
 	@Override

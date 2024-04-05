@@ -7,8 +7,8 @@ public class Sanglier extends Produit{
 	private int poids;
 	private Gaulois chasseur;
 	
-	public Sanglier(String unite, int poids, Gaulois chasseur) {
-		super("sanglier", unite);
+	public Sanglier(int poids, Gaulois chasseur) {
+		super("sanglier", Unite.KILOGRAMME.getUnit());
 		this.poids = poids;
 		this.chasseur = chasseur;
 	}
@@ -23,5 +23,10 @@ public class Sanglier extends Produit{
 		result.append(chasseur.getNom());
 		result.append(".");
 		return result.toString();
+	}
+
+	@Override
+	public double calculerPrix(double prix) {
+		return ((double)poids/1000)*prix;
 	}
 }
