@@ -10,12 +10,14 @@ public class Etal<P extends IProduit> implements IEtal{
 	private P[] produits;
 	private int nbProduit;
 	private double prix;
+	private boolean isEtalOccupe = false;
 	
 	public void installerVendeur(Gaulois vendeur, P[] produit, double prix) {
 		this.vendeur = vendeur;
 		this.produits = produit;
 		this.prix = prix;
 		nbProduit = produit.length;
+		isEtalOccupe = true;
 	}
 
 	@Override
@@ -71,5 +73,9 @@ public class Etal<P extends IProduit> implements IEtal{
 		
 		chaine.append("\n");
 		return chaine.toString();
+	}
+	
+	public boolean isEtalOccupe() {
+		return isEtalOccupe;
 	}
 }

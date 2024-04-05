@@ -1,15 +1,37 @@
 package scenarioTest;
 
 import personnages.Gaulois;
-import vilagegauloisold.Etal;
+import produit.Poisson;
+import produit.Produit;
+import produit.Sanglier;
+import vilagegauloisold.DepenseMarchand;
+import villagegaulois.Etal;
+import villagegaulois.IVillage;
 
 public class Scenario {
 
 	public static void main(String[] args) {
 
-		// TODO Partie 4 : creer de la classe anonyme Village
+		IVillage village = new IVillage() {
+			private Etal[] marche = new Etal[3];
+			private int nbEtal = 0;
+			
+			@Override
+			public <P extends Produit> boolean installerVendeur(Etal<P> etal, Gaulois vendeur,
+					P[] produit, int prix) {
+				etal.installerVendeur(vendeur, produit, prix);
+				marche[nbEtal] = etal;
+				nbEtal++;
+				return etal.isEtalOccupe();
+			}
 
-		// fin
+			@Override
+			public DepenseMarchand[] acheterProduit(String produit, int quantiteSouhaitee) {
+				DepenseMarchand[] depense;
+				
+			}
+			
+		};
 
 		Gaulois ordralfabetix = new Gaulois("Ordralfabétix", 9);
 		Gaulois obelix = new Gaulois("Obélix", 20);
