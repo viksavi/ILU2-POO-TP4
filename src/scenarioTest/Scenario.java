@@ -19,16 +19,41 @@ public class Scenario {
 			@Override
 			public <P extends Produit> boolean installerVendeur(Etal<P> etal, Gaulois vendeur,
 					P[] produit, int prix) {
-				etal.installerVendeur(vendeur, produit, prix);
-				marche[nbEtal] = etal;
-				nbEtal++;
-				return etal.isEtalOccupe();
+				if(nbEtal < marche.length) {
+					etal.installerVendeur(vendeur, produit, prix);
+					marche[nbEtal] = etal;
+					nbEtal++;
+					return true;
+				}
+				return false;
 			}
 
 			@Override
 			public DepenseMarchand[] acheterProduit(String produit, int quantiteSouhaitee) {
-				DepenseMarchand[] depense;
+				DepenseMarchand[] depenses = new DepenseMarchand[marche.length];
+				int quantiteReste = quantiteSouhaitee;
+				int nbDepenses = 0;
+				for (int i = 0; i < nbEtal && quantiteReste > 0; i++) {
+					int quantiteVendre = marche[i].contientProduit(produit, quantiteReste);
+					if (quantiteVendre != 0 ) {
+						quantiteReste -= quantiteVendre;
+						double prixPaye = marche[i].acheterProduit(quantiteVendre);
+						depenses[nbDepenses] = new DepenseMarchand(marche[i].getVendeur(), quantiteVendre, produit, prixPaye);
+						nbDepenses++;
+					}
+				}
 				
+				return depenses;
+			}
+			
+			@Override
+			public String toString() {
+				StringBuilder result = new StringBuilder();
+				for(int i = 0; i < nbEtal; i++) {
+					result.append(marche[i].etatEtal());
+					result.append("\n");
+				}
+				return result.toString();
 			}
 			
 		};
