@@ -46,7 +46,7 @@ public class Etal<P extends IProduit> implements IEtal{
 	@Override
 	public double acheterProduit(int quantiteSouhaitee) {
 		double prixPaye = 0;
-		for (int i = nbProduit - 1; i > nbProduit - quantiteSouhaitee - 1 && i >= 0; i--) {
+		for (int i = nbProduit - 1; i > nbProduit - quantiteSouhaitee - 1 || i > 1; i--) {
 			prixPaye += produits[i].calculerPrix(prix);
 		}
 		if (nbProduit >= quantiteSouhaitee) {
