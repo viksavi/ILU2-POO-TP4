@@ -31,8 +31,8 @@ public class ScenarioTest {
 		marche[1] = etalSanglier2;
 		marche[2] = etalPoisson;
 		
-		etalSanglier1.installerVendeur(asterix, sangliersAsterix, 10);
-		etalSanglier2.installerVendeur(obelix, sangliersObelix, 8);
+		etalSanglier1.installerVendeur(asterix, sangliersAsterix, 8);
+		etalSanglier2.installerVendeur(obelix, sangliersObelix, 10);
 		etalPoisson.installerVendeur(ordralfabetix, poissons, 7);
 		
 		for(int i = 0; i < marche.length; i++) {

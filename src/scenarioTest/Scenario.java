@@ -77,8 +77,8 @@ public class Scenario {
 		Poisson poisson1 = new Poisson("lundi");
 		Poisson[] poissons = { poisson1 };
 
-		village.installerVendeur(etalSanglierAsterix, asterix, sangliersAsterix, 10);
-		village.installerVendeur(etalSanglierObelix, obelix, sangliersObelix, 8);
+		village.installerVendeur(etalSanglierAsterix, asterix, sangliersAsterix, 8);
+		village.installerVendeur(etalSanglierObelix, obelix, sangliersObelix, 10);
 		village.installerVendeur(etalPoisson, ordralfabetix, poissons, 5);
 
 		System.out.println(village);
